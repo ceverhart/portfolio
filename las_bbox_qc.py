@@ -47,7 +47,7 @@ if __name__ == "__main__":
             header_val = getattr(las_header,field_name)
 
             if field_name in header_data.keys():
-                header_data[field_name] = header_val
+                header_data[field_name].append(header_val)
 
         # Get the min/max x and y, buid the geometry
         mins = las_header.mins
