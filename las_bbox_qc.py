@@ -41,7 +41,7 @@ if __name__ == "__main__":
         las_header = get_header(las)
 
         # Include the file name for output
-        header_data['filename'] = las.name
+        header_data['filename'].append(las.name)
 
         for field_name in header_fields:
             header_val = getattr(las_header,field_name)
@@ -77,8 +77,8 @@ if __name__ == "__main__":
             elif crs_sub.is_geographic:
                 epsg_h = header_srs.sub_crs_list[0].to_epsg()
 
-        header_data['crs'].append(epsg_h)
-        header_data['vdatum'].append(epsg_v)
+        header_data['crs'].append(str(epsg_h))
+        header_data['vdatum'].append(str(epsg_v))
 
         # Note: this will assign the last found crs to output
         # Potential improvement opportunity
